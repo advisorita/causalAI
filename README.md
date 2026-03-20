@@ -120,9 +120,9 @@ The skill uses progressive disclosure — only the relevant reference file loads
 
 ## Built by
 
-[Larita](https://www.linkedin.com/in/rita-luo/) — data scientist, startup founder, and creator. 12+ years in data science at Yahoo, PayPal, and Peacock. Co-founder of [ExpLab](https://explab.ai) (AI experimentation platform).
+[Rita Luo](https://www.linkedin.com/in/ritayitingluo/) — data scientist, startup founder, and creator. 12+ years in data science at Yahoo, PayPal, and Peacock. Co-founder of [ExpLab](https://explab.ai) (AI experimentation platform).
 
-Follow for more causal AI content and skills: [LinkedIn](https://www.linkedin.com/in/rita-luo/) · [YouTube](https://youtube.com/@larita) · [RedNote](https://rednote.com/@larita)
+Follow for more causal AI content and skills: [LinkedIn](https://www.linkedin.com/in/ritayitingluo/) · [YouTube](https://www.youtube.com/@RitasDataProject) · [RedNote](https://www.xiaohongshu.com/user/profile/5ace224511be10488767f365)
 
 ---
 
