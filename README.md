@@ -148,6 +148,20 @@ The skill uses progressive disclosure — only the relevant reference file loads
 
 ---
 
+---
+
+## Exporting the report
+
+The shared causal report (Workflow 4) is generated as an HTML file with two built-in export options:
+
+**Export image** — saves the full report as a high-resolution PNG (2x). Best for sharing on LinkedIn, X, Slack, or Notion. The export toolbar hides itself so it doesn't appear in the image.
+
+**Export PDF** — triggers the browser print dialog with clean print CSS. Save as PDF for emailing to a CFO or attaching to a board memo.
+
+Both buttons appear above the report when it's generated. Open in any browser — no additional tools required.
+
+> Note: The report uses Inter (Google Fonts) rather than system fonts. This is intentional — system fonts like  cause character clustering in image exports.
+
 ## Built by
 
 [Rita Luo](https://www.linkedin.com/in/ritayitingluo/) — data scientist, startup founder, and creator. 12+ years in data science at Yahoo, PayPal, and Peacock. Co-founder of [ExpLab](https://explab.ai) (AI experimentation platform).
