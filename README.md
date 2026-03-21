@@ -82,6 +82,36 @@ Just describe your situation in plain English. The skill routes to the right wor
 
 ---
 
+## What data do you need?
+
+**Diagnosing a Finance vs. Product disagreement?**
+No data needed — just describe the situation in plain English. The skill asks the clarifying questions.
+
+**Measuring a feature's impact after launch?**
+
+| Method | When it applies | What to prepare |
+|---|---|---|
+| Difference-in-Differences | Some users got the feature, others didn't | Spreadsheet: date · metric · group (treated/control) |
+| Synthetic control | Feature went to everyone at once | Spreadsheet: date · metric (monthly, no control group needed) |
+| CausalImpact | Single time series, no control group | Spreadsheet: date · outcome metric · optional control metrics |
+| RDD | Feature triggered at a threshold (score, tier, date) | Spreadsheet: date · metric · assignment variable (the threshold score) |
+
+Minimum time window: 8 weeks of data before launch, 4 weeks after. More pre-period is better.
+No SQL or data warehouse required — aggregate weekly numbers in a spreadsheet is enough.
+
+**Simulating revenue impact before launch?**
+No feature data needed (it hasn't shipped). Just four numbers you can find in any analytics dashboard:
+
+- Monthly new user volume
+- Current retention rate (30-day or 90-day)
+- Current revenue per user (MRR or 90-day LTV)
+- Activation rate at your key onboarding step (rough estimate is fine)
+
+**Building a shared causal report?**
+No additional data — generated from the attribution analysis output.
+
+---
+
 ## Skill structure
 
 ```
