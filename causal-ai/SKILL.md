@@ -1,4 +1,3 @@
-[SKILL.md](https://github.com/user-attachments/files/26150267/SKILL.md)
 ---
 name: causal-ai
 description: >
