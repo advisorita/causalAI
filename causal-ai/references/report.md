@@ -150,3 +150,85 @@ If you're facilitating a Finance/Product alignment meeting, use this agenda:
 6. **(10 min)** Agree on next steps
 
 The output of this meeting is the shared report above — signed by both Finance and Product leads.
+
+---
+
+## Export Options
+
+Every shared causal report should be produced as an HTML file with two built-in export buttons. Always include these when generating the report output.
+
+### How to generate the report with exports
+
+When producing the shared report as an HTML file, include the following at the top of the `<body>`:
+
+1. **Google Fonts link** in `<head>` — use `Inter` (not system fonts — they break image export):
+```html
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+```
+
+2. **Export toolbar** above the report card:
+```html
+<div id="export-bar" style="max-width:680px;margin:0 auto 1rem;display:flex;gap:.75rem;justify-content:flex-end;">
+  <button onclick="exportImage()" style="...">Export image</button>
+  <button onclick="exportPDF()" style="...">Export PDF</button>
+</div>
+```
+
+3. **html2canvas script** + export functions before `</body>`:
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+  function exportPDF() {
+    document.getElementById('export-bar').style.display = 'none';
+    window.print();
+    document.getElementById('export-bar').style.display = '';
+  }
+
+  async function exportImage() {
+    const bar = document.getElementById('export-bar');
+    bar.style.display = 'none';
+    await document.fonts.ready;
+    await new Promise(r => setTimeout(r, 600));
+    const canvas = await html2canvas(document.querySelector('.page'), {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: '#ffffff',
+      onclone: function(cloned) {
+        cloned.querySelectorAll('*').forEach(el => {
+          const cs = window.getComputedStyle(el);
+          el.style.fontFamily = 'Inter, sans-serif';
+          el.style.letterSpacing = cs.letterSpacing;
+          el.style.wordSpacing = cs.wordSpacing;
+          el.style.fontKerning = 'none';
+        });
+      }
+    });
+    bar.style.display = '';
+    const link = document.createElement('a');
+    link.download = 'causal-ai-report.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  }
+</script>
+```
+
+4. **Print CSS** inside `<style>` — hides toolbar and removes card styling for clean PDF output:
+```css
+@media print {
+  body { background: white; padding: 0; }
+  #export-bar { display: none; }
+  .page { border: none; border-radius: 0; max-width: 100%; }
+}
+```
+
+### Export formats
+
+| Format | Best for | How |
+|---|---|---|
+| **PNG image** | LinkedIn/X post, Slack, Notion | Click "Export image" — downloads 2x resolution PNG |
+| **PDF** | Sending to CFO, board memo, email attachment | Click "Export PDF" — browser print dialog, save as PDF |
+
+### Critical: use Inter, not system fonts
+
+html2canvas cannot render `-apple-system`, `BlinkMacSystemFont`, or `Segoe UI` correctly — characters cluster together in the exported image. Always use `font-family: 'Inter', sans-serif` in report HTML output.
